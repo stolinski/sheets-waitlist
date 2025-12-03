@@ -1,3 +1,13 @@
+@font-face {
+	font-family: 'MD IO';
+	src:
+		url('/MDIO-VF.woff2') format('woff2'),
+		url('/MDIO-VF.woff') format('woff');
+	font-weight: 100 900;
+	font-style: normal italic;
+	font-display: swap;
+}
+
 :root {
 	font-family: 'MD IO';
 	font-style: italic;
