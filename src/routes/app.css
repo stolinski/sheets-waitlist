@@ -4,13 +4,12 @@
 		url('/MDIO-VF.woff2') format('woff2'),
 		url('/MDIO-VF.woff') format('woff');
 	font-weight: 100 900;
-	font-style: normal italic;
 	font-display: swap;
 }
 
 :root {
 	font-family: 'MD IO';
-	font-style: italic;
+	font-variation-settings: 'ital' 1;
 	font-size: 16px;
 	line-height: 24px;
 	font-weight: 400;
@@ -26,8 +25,6 @@
 	color-scheme: light dark;
 	--bg: light-dark(#f6f6f6, #111);
 	--fg: light-dark(#0f0f0f, #f6f6f6);
-	color: var(--fg);
-	background-color: var(--bg);
 
 	--fg-05: oklch(from var(--fg) l c h / 0.05);
 	--fg-1: oklch(from var(--fg) l c h / 0.1);
@@ -57,6 +54,8 @@
 
 body {
 	margin: 0;
+	color: var(--fg);
+	background-color: var(--bg);
 }
 
 /* Drag region for frameless window - covers top area including traffic lights */

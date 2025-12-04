@@ -45,7 +45,6 @@
 		{/if}
 	</div>
 </main>
-<div class="noise"></div>
 
 <style>
 	:global(body) {
