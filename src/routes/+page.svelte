@@ -45,7 +45,7 @@
 			</form>
 		{/if}
 	</div>
-	<img class="billboard" src={light} />
+	<!-- <img class="billboard" src={light} /> -->
 </main>
 
 <style>
