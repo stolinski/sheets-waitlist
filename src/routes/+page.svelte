@@ -17,7 +17,7 @@
 
 		{#if submitted && joinWaitlist.result?.success}
 			<div class="success">
-				<p>Thanks for joining! We'll be in touch soon.</p>
+				<p>Thanks for joining! <br />We'll be in touch soon.</p>
 			</div>
 		{:else}
 			<form
@@ -167,7 +167,7 @@
 
 	.success {
 		background: color-mix(in oklch, var(--accent) 15%, var(--bg));
-		color: var(--accent);
+		color: var(--fg);
 		padding: 1.5rem;
 		border-radius: 0.5rem;
 	}
