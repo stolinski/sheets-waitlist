@@ -5,9 +5,24 @@
 	let submitted = $state(false);
 </script>
 
+<svelte:head>
+	<meta property="og:type" content="website" />
+
+	<meta property="og:title" content="v_framer - Record Sources & Screens" />
+	<meta property="twitter:title" content="v_framer - Record Sources & Screens" />
+
+	<meta property="og:description" content="v_framer - Record Sources & Screens" />
+	<meta name="description" content="v_framer - Record Sources & Screens" />
+
+	<meta property="og:image" content="/og.png" />
+	<meta property="og:image:secure_url" content="/og.png" />
+	<meta property="twitter:image" content="/og.png" />
+	<meta property="twitter:card" content="summary_large_image" />
+</svelte:head>
+
 <header>
 	<h1>v_framer</h1>
-	<p>Record all of your screens & sources, no proprietary wrappers or bloat</p>
+	<p>Record all of your screens & video sources. No proprietary wrappers or bloat.</p>
 </header>
 <main>
 	<div class="container">
@@ -47,61 +62,91 @@
 </main>
 
 <style>
+	:global(html) {
+		margin: 0;
+		padding: 0;
+	}
 	:global(body) {
 		margin: 0;
-		min-height: 100vh;
+		min-height: 100dvh;
+	}
+
+	header {
+		text-align: center;
+		padding: 3rem 1rem 1.5rem;
+	}
+
+	header h1 {
+		font-size: clamp(2rem, 8vw, 4rem);
+		margin: 0 0 0.5rem;
+		line-height: 1.1;
+		font-weight: 100;
+	}
+
+	header p {
+		color: var(--fg-5);
+		margin: 0;
+		font-size: clamp(0.875rem, 3vw, 1.125rem);
+		max-width: 30ch;
+		margin-inline: auto;
 	}
 
 	main {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		padding: 1rem;
+		padding: 0 1rem 2rem;
 	}
 
 	.container {
 		background: var(--bg);
-		padding: 3rem;
+		padding: 1.5rem;
 		border-radius: 1rem;
 		box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-		max-width: 600px;
-		width: 100%;
+		max-width: 500px;
+		margin-inline: auto;
 		text-align: center;
+	}
+
+	h2 {
+		font-size: clamp(1.25rem, 5vw, 1.5rem);
+		margin: 0 0 0.5rem;
 	}
 
 	.subtitle {
 		color: var(--fg-5);
-		margin: 0 0 2rem;
+		margin: 0 0 1.5rem;
+		font-size: 0.875rem;
 	}
 
 	.form-group {
 		display: flex;
 		flex-direction: column;
-		gap: 1rem;
-	}
-	h1 {
-		line-height: 1.2;
+		gap: 0.75rem;
 	}
 
 	input {
-		padding: 1rem;
-		border: 2px solid #e0e0e0;
+		padding: 0.875rem 1rem;
+		border: 2px solid var(--fg-2);
 		border-radius: 0.5rem;
 		font-size: 1rem;
 		transition: border-color 0.2s;
+		background: var(--bg);
+		color: var(--fg);
+	}
+
+	input::placeholder {
+		color: var(--fg-4);
 	}
 
 	input:focus {
 		outline: none;
-		border-color: #667eea;
+		border-color: var(--accent);
 	}
 
 	input[aria-invalid='true'] {
-		border-color: #dc2626;
+		border-color: var(--error);
 	}
 
 	button {
-		padding: 1rem;
+		padding: 0.875rem 1rem;
 		background: var(--accent);
 		color: black;
 		border: none;
@@ -116,7 +161,7 @@
 
 	button:hover:not(:disabled) {
 		transform: translateY(-2px);
-		box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+		box-shadow: 0 4px 12px color-mix(in oklch, var(--accent) 40%, transparent);
 	}
 
 	button:disabled {
@@ -125,8 +170,8 @@
 	}
 
 	.error {
-		color: #dc2626;
-		background: #fef2f2;
+		color: var(--error);
+		background: color-mix(in oklch, var(--error) 10%, var(--bg));
 		padding: 0.75rem;
 		border-radius: 0.5rem;
 		margin: 0;
@@ -134,8 +179,8 @@
 	}
 
 	.success {
-		background: #ecfdf5;
-		color: #059669;
+		background: color-mix(in oklch, var(--accent) 15%, var(--bg));
+		color: var(--accent);
 		padding: 1.5rem;
 		border-radius: 0.5rem;
 	}
@@ -152,8 +197,20 @@
 		filter: contrast(360%) brightness(1500%) invert(100%);
 		background: url(/noise.svg);
 		opacity: 0.2;
+		pointer-events: none;
 	}
+
 	p {
 		text-align: center;
+	}
+
+	@media (min-width: 640px) {
+		header {
+			padding: 4rem 2rem 2rem;
+		}
+
+		.container {
+			padding: 2rem;
+		}
 	}
 </style>
