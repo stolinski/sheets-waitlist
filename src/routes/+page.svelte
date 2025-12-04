@@ -1,6 +1,7 @@
 <script lang="ts">
 	import './app.css';
 	import { joinWaitlist } from './waitlist.remote';
+	import light from './light.png';
 
 	let submitted = $state(false);
 </script>
@@ -44,6 +45,7 @@
 			</form>
 		{/if}
 	</div>
+	<img class="billboard" src={light} />
 </main>
 
 <style>
@@ -197,5 +199,12 @@
 		.container {
 			padding: 2rem;
 		}
+	}
+
+	.billboard {
+		border-radius: 10px;
+		max-width: 90vw;
+		margin: 0 auto;
+		display: block;
 	}
 </style>

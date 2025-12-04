@@ -11,9 +11,9 @@
 	<meta property="og:description" content="v_framer - Record Sources & Screens" />
 	<meta name="description" content="v_framer - Record Sources & Screens" />
 
-	<meta property="og:image" content="/og.png" />
-	<meta property="og:image:secure_url" content="/og.png" />
-	<meta property="twitter:image" content="/og.png" />
+	<meta property="og:image" content="https://vframer.video/og.png" />
+	<meta property="og:image:secure_url" content="https://vframer.video/og.png" />
+	<meta property="twitter:image" content="https://vframer.video/og.png" />
 	<meta property="twitter:card" content="summary_large_image" />
 
 	<link rel="icon" href="/favicon.ico" sizes="any" />
