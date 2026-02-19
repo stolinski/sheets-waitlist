@@ -1,23 +1,25 @@
 <script lang="ts">
 	import './app.css';
 	import { joinWaitlist } from './waitlist.remote';
-	import light from './light.png';
+	import { PUBLIC_TURNSTILE_SITE_KEY } from '$env/static/public';
 
 	let submitted = $state(false);
 </script>
 
 <header>
-	<h1>v_framer</h1>
-	<p>Record all of your screens & video sources. No proprietary wrappers or bloat.</p>
+	<p class="product-name">v_framer</p>
+	<h1>Record every source. One take.</h1>
+	<p class="subheadline">
+		Camera, screen, and audio captured simultaneously — in a single macOS app built for creators who
+		record.
+	</p>
 </header>
+
 <main>
 	<div class="container">
-		<h2>Join the Waitlist</h2>
-		<p class="subtitle">Be the first to know when we launch.</p>
-
 		{#if submitted && joinWaitlist.result?.success}
 			<div class="success">
-				<p>Thanks for joining! <br />We'll be in touch soon.</p>
+				<p>You're on the list.<br />We'll let you know when it's time to record.</p>
 			</div>
 		{:else}
 			<form
@@ -38,14 +40,41 @@
 
 					<input {...joinWaitlist.fields.email.as('email')} placeholder="Enter your email" />
 
+					<div
+						class="cf-turnstile"
+						data-sitekey={PUBLIC_TURNSTILE_SITE_KEY}
+						data-size="invisible"
+					></div>
+
 					<button type="submit" disabled={!!joinWaitlist.pending}>
-						{joinWaitlist.pending ? 'Joining...' : 'Join Waitlist'}
+						{joinWaitlist.pending ? 'Joining...' : 'Get Early Access'}
 					</button>
 				</div>
 			</form>
 		{/if}
 	</div>
-	<!-- <img class="billboard" src={light} /> -->
+
+	<section class="benefits">
+		<div class="benefit">
+			<h3>Multi-source capture</h3>
+			<p>
+				Record your camera, screen, and audio at the same time. No complex routing. No workarounds.
+			</p>
+		</div>
+		<div class="benefit">
+			<h3>Crash-proof recording</h3>
+			<p>
+				Segment-based capture writes to disk every 10 seconds. If something goes wrong, you lose
+				seconds — not hours of footage.
+			</p>
+		</div>
+		<div class="benefit">
+			<h3>Clean and native</h3>
+			<p>
+				A macOS app that does one thing well. No subscription walls. No feature bloat. Just record.
+			</p>
+		</div>
+	</section>
 </main>
 
 <style>
@@ -63,23 +92,35 @@
 		padding: 3rem 1rem 1.5rem;
 	}
 
-	header h1 {
-		font-size: clamp(2rem, 8vw, 4rem);
-		margin: 0 0 0.5rem;
-		line-height: 1.1;
-		font-weight: 100;
+	.product-name {
+		font-size: 0.875rem;
+		text-transform: uppercase;
+		letter-spacing: 0.15em;
+		color: var(--accent);
+		margin: 0 0 1rem;
+		font-weight: 600;
 	}
 
-	header p {
-		color: var(--fg-5);
-		margin: 0;
-		font-size: clamp(0.875rem, 3vw, 1.125rem);
-		max-width: 30ch;
+	header h1 {
+		font-size: clamp(2rem, 8vw, 3.5rem);
+		margin: 0 0 1rem;
+		line-height: 1.1;
+		font-weight: 100;
+		max-width: 20ch;
 		margin-inline: auto;
 	}
 
+	.subheadline {
+		color: var(--fg-5);
+		margin: 0;
+		font-size: clamp(0.9375rem, 3vw, 1.125rem);
+		max-width: 40ch;
+		margin-inline: auto;
+		line-height: 1.5;
+	}
+
 	main {
-		padding: 0 1rem 2rem;
+		padding: 0 1rem 3rem;
 	}
 
 	.container {
@@ -90,17 +131,6 @@
 		max-width: 500px;
 		margin-inline: auto;
 		text-align: center;
-	}
-
-	h2 {
-		font-size: clamp(1.25rem, 5vw, 1.5rem);
-		margin: 0 0 0.5rem;
-	}
-
-	.subtitle {
-		color: var(--fg-5);
-		margin: 0 0 1.5rem;
-		font-size: 0.875rem;
 	}
 
 	.form-group {
@@ -177,14 +207,26 @@
 		font-weight: 500;
 	}
 
-	.noise {
-		position: fixed;
-		inset: 0;
-		z-index: -1;
-		filter: contrast(360%) brightness(1500%) invert(100%);
-		background: url(/noise.svg);
-		opacity: 0.2;
-		pointer-events: none;
+	.benefits {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 2rem;
+		max-width: 800px;
+		margin: 3rem auto 0;
+		padding: 0 0.5rem;
+	}
+
+	.benefit h3 {
+		font-size: 1rem;
+		font-weight: 600;
+		margin: 0 0 0.375rem;
+	}
+
+	.benefit p {
+		color: var(--fg-5);
+		margin: 0;
+		font-size: 0.875rem;
+		line-height: 1.5;
 	}
 
 	p {
@@ -199,12 +241,11 @@
 		.container {
 			padding: 2rem;
 		}
-	}
 
-	.billboard {
-		border-radius: 10px;
-		max-width: 90vw;
-		margin: 0 auto;
-		display: block;
+		.benefits {
+			grid-template-columns: repeat(3, 1fr);
+			gap: 2rem;
+			margin-top: 4rem;
+		}
 	}
 </style>

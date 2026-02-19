@@ -5,11 +5,18 @@
 <svelte:head>
 	<meta property="og:type" content="website" />
 
-	<meta property="og:title" content="v_framer - Record Sources & Screens" />
-	<meta property="twitter:title" content="v_framer - Record Sources & Screens" />
+	<title>v_framer — Multi-source screen recording for macOS</title>
+	<meta property="og:title" content="v_framer — Record every source. One take." />
+	<meta property="twitter:title" content="v_framer — Record every source. One take." />
 
-	<meta property="og:description" content="v_framer - Record Sources & Screens" />
-	<meta name="description" content="v_framer - Record Sources & Screens" />
+	<meta
+		property="og:description"
+		content="Record your camera, screen, and audio simultaneously. A native macOS app with crash-proof segment-based recording. Join the waitlist."
+	/>
+	<meta
+		name="description"
+		content="Record your camera, screen, and audio simultaneously. A native macOS app with crash-proof segment-based recording. Join the waitlist."
+	/>
 
 	<meta property="og:image" content="https://vframer.video/og.png" />
 	<meta property="og:image:secure_url" content="https://vframer.video/og.png" />
@@ -22,6 +29,7 @@
 	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
 	<link rel="manifest" href="/site.webmanifest" />
 	<script defer data-domain="vframer.video" src="https://analytics.tolin.ski/js/script.js"></script>
+	<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 </svelte:head>
 
 {@render children()}
