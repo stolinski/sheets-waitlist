@@ -1,8 +1,6 @@
 <script lang="ts">
 	import './app.css';
 	import { joinWaitlist } from './waitlist.remote';
-	import { PUBLIC_TURNSTILE_SITE_KEY } from '$env/static/public';
-
 	let submitted = $state(false);
 </script>
 
@@ -44,12 +42,6 @@
 
 				<div class="fields">
 					<input {...joinWaitlist.fields.email.as('email')} placeholder="Enter your email" />
-
-					<div
-						class="cf-turnstile"
-						data-sitekey={PUBLIC_TURNSTILE_SITE_KEY}
-						data-size="invisible"
-					></div>
 
 					<button type="submit" disabled={!!joinWaitlist.pending}>
 						{joinWaitlist.pending ? 'Joining...' : 'Get Early Access'}
