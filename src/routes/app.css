@@ -26,10 +26,10 @@
 	--fg-05: rgba(246, 246, 246, 0.05);
 	--fg-1: rgba(246, 246, 246, 0.1);
 	--fg-2: rgba(246, 246, 246, 0.2);
-	--fg-3: rgba(246, 246, 246, 0.3);
-	--fg-4: rgba(246, 246, 246, 0.4);
-	--fg-5: rgba(246, 246, 246, 0.5);
-	--fg-6: rgba(246, 246, 246, 0.6);
+	--fg-3: rgba(246, 246, 246, 0.52);
+	--fg-4: rgba(246, 246, 246, 0.62);
+	--fg-5: rgba(246, 246, 246, 0.72);
+	--fg-6: rgba(246, 246, 246, 0.8);
 	--fg-7: rgba(246, 246, 246, 0.75);
 	--fg-8: rgba(246, 246, 246, 0.9);
 	--fg-9: var(--fg);
@@ -49,7 +49,53 @@ body {
 input,
 textarea,
 select {
+	appearance: none;
+	-webkit-appearance: none;
 	-webkit-text-fill-color: var(--fg);
+}
+
+@media (hover: none) and (pointer: coarse) and (prefers-color-scheme: dark) {
+	body {
+		background: #0f1012;
+	}
+
+	.noise {
+		display: none;
+	}
+
+	header .sub {
+		color: rgba(246, 246, 246, 0.82);
+	}
+
+	header .brand span:last-child {
+		color: rgba(246, 246, 246, 0.82);
+	}
+
+	.form-card {
+		background: rgba(26, 26, 26, 0.88);
+		border-color: rgba(255, 255, 255, 0.16);
+	}
+
+	.form-card input {
+		background: rgba(12, 12, 12, 0.9);
+		border-color: rgba(255, 255, 255, 0.28);
+		color: var(--fg);
+		-webkit-text-fill-color: var(--fg);
+		caret-color: var(--accent);
+	}
+
+	.form-card input::placeholder {
+		color: rgba(246, 246, 246, 0.8);
+	}
+
+	.feature {
+		background: rgba(26, 26, 26, 0.88);
+		border-color: rgba(255, 255, 255, 0.08);
+	}
+
+	.feature p {
+		color: rgba(246, 246, 246, 0.72);
+	}
 }
 
 * {
